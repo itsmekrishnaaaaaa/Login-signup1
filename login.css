@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background: url(background.jpg) no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+  }
+
+  .login-container {
+    width: 60%;
+    height: 90%;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    position: absolute;
+  }
+
+  .img {
+    margin: auto;
+    padding: 50px;
+    background: url("hero.jpg");
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    float: left;
+    width: 35%;
+    height: 80%;
+  }
+
+  .container1 {
+    margin: auto;
+    padding: 60px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    display: grid;
+    border-radius: 10px;
+    float: right;
+    width: 35%;
+    height: 80%;
+  }
+
+  h2 {
+    margin-top: auto;
+    color: #222eb1;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffff;
+    border: 1px solid #222eb1;
+    border-radius: 10px;
+    width: auto;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #222eb1;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1000;
+    display: none;
+  }
+
+  #forgotpassword {
+    color: #222eb1;
+    justify-content: right;
+    margin: 10px;
+    padding-left: 50px;
+    position: relative;
+  }
+

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset</title>
+    <style>
+        body {
+            background: url(background.jpg);
+            font-family: Arial, Helvetica, sans-serif;
+            background-size: cover;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reset-password-container {
+            width: 30%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: block;
+        }
+
+        .reset-password-container h2 {
+            color: #222eb1;
+        }
+
+        #resetPasswordForm {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .password-input {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .password-input input {
+            padding: 10px 40px 10px 10px;
+            background-color: #fff;
+            border: 1px solid #222eb1;
+            border-radius: 10px;
+            width: 90%;
+            /* Add this line to set the width to 100% */
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            /* Adjusted position to center vertically */
+            transform: translateY(-50%);
+            /* Adjusted position to center vertically */
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+        }
+
+        #resetPasswordForm button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #222eb1;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #password-requirements {
+            display: block;
+            font-size: 12px;
+        }
+
+        #password-requirements p {
+            margin: 2px 2px;
+        }
+
+        #password-requirements p.invalid {
+            color: red;
+        }
+
+        #password-requirements p.valid {
+            color: green;
+        }
+
+        #message-container{
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            border: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reset-password-container">
+        <h2>Reset Password</h2>
+        <form id="resetPasswordForm" onsubmit="return validateAndSubmit()">
+            <div class="password-input">
+                <input type="password" id="newPassword" name="newPassword" placeholder="New Password" required />
+                <img class="toggle-password" src="hide.png" alt="Toggle Password Visibility"
+                    onclick="togglePasswordVisibility('newPassword')" />
+            </div>
+            <div class="password-input">
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
+                    required />
+                <img class="toggle-password" src="hide.png" alt="Toggle Password Visibility"
+                    onclick="togglePasswordVisibility('confirmPassword')" />
+            </div>
+            <div id="password-requirements">
+                <p id="uppercase">✓ Uppercase</p>
+                <p id="lowercase">✓ Lowercase</p>
+                <p id="symbol">✓ Symbol</p>
+                <p id="number">✓ Numbers</p>
+                <p id="length">✓ Minimum 8 characters</p>
+            </div>
+
+            <button type="submit">Reset Password</button>
+             <div id="message-container"></div>
+        </form>
+    </div>
+
+
+    <script>
+
+
+        function displayMessage(message, isSuccess) {
+            const messageContainer = document.getElementById("message-container");
+            messageContainer.innerHTML = message;
+            messageContainer.style.color = isSuccess ? "green" : "red";
+        }
+
+        document.getElementById("newPassword").addEventListener("input", function () {
+            validatePasswordRequirements(this.value);
+        });
+
+        document.getElementById("confirmPassword").addEventListener("input", function () {
+            validatePasswordRequirements(this.value);
+        });
+
+        function validatePasswordRequirements(password) {
+            const requirements = {
+                uppercase: /[A-Z]/.test(password),
+                lowercase: /[a-z]/.test(password),
+                symbol: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+                number: /[0-9]/.test(password),
+                length: password.length >= 8
+            };
+
+            for (const key in requirements) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.className = requirements[key] ? "valid" : "invalid";
+                }
+            }
+
+            return true;
+        }
+
+        function togglePasswordVisibility(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const eyeIcon = document.querySelector(`#${inputId} + .toggle-password`);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.src = "view.png";
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.src = "hide.png";
+            }
+        }
+
+        function validateAndSubmit() {
+            var newPassword = document.getElementById("newPassword").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (newPassword === confirmPassword) {
+                if (validatePasswordRequirements(newPassword)) {
+                    // Passwords match and meet the requirements
+                    const formData = new FormData();
+                    formData.append("newPassword", newPassword);
+                    console.log('Validating and submitting form');
+
+                    fetch("./php/Updatepass.php", {
+                        method: "POST",
+                        body: formData,
+                    })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.success) {
+                                alert("Password updated successfully.");
+                                window.location.href = "login.html";
+                            } else {
+                                alert(data.error);
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Error:", error);
+                            alert("An error occurred while processing your request.");
+                        });
+                } else {
+
+                    displayMessage("Password does not meet the requirements.", false);
+                }
+            } else {
+                displayMessage("New password and confirm password do not match.", false);
+            }
+
+            return false;
+        }
+
+    </script>
+</body>
+
+</html>

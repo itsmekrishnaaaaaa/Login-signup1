@@ -1,0 +1,182 @@
+    body {
+        margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative; 
+    }
+
+    .container {
+        width: 60%;
+        height: 90%;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        position: absolute;
+
+    }
+
+    .img {
+        margin: auto;
+        padding: 50px;
+        background: url(hero.jpg);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        float: left;
+        width: 35%;
+        height: 80%;
+    }
+    .container1 {
+        margin: auto;
+        padding: 40px;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+        display: grid;
+        border-radius: 10px;
+        float: right;
+    }
+
+    h2 {
+        margin-top: auto;
+        color: #222eb1;
+    }
+    
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color:#ffff;
+        border: 1px solid #222eb1;
+        border-radius: 10px;
+        width: auto;
+    }
+
+    #password-requirements {
+        display: none; /* Initially hide the password requirements */
+        font-size: 12px; /* Set smaller font size */
+    }
+
+    #password-requirements p {
+        margin: 5px 0; /* Add some margin between points */
+    }
+
+
+
+
+    #strength-bar-container {
+        height: 8px;
+        margin-top: 5px;
+        border-radius: 6px;
+        background-color: #ddd;
+        overflow: hidden; /* Hide overflowing content */
+    }
+
+    #strength-bar {
+        height: 100%;
+        width: 0;
+        transition: width 0.3s;
+    }
+
+    #strength-message {
+        font-size: 14px;
+        margin-top: 5px;
+        display: inline-block; 
+    }
+
+    .password-container {
+        position: relative;
+     
+    }
+
+    .password-container input {
+        padding-right: 130px; 
+    }
+
+    .password-container .toggle-password {
+        position: absolute;
+        top: 40%;
+        right: 10px; 
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 18px; 
+        color: #555; 
+    }
+    #Account {
+        color: #000000;
+        justify-content: right;
+        margin: 10px;
+        position: relative;
+        padding: 10px;
+      }
+
+      
+    #Account A {
+        color: #222eb1;
+        justify-content: right;
+        text-decoration: none;
+        position: relative;
+      }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #222eb1;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        align-items: center;
+        justify-content: center;
+        margin-left: 30%;
+        width: 30%;
+        height: 40px;
+        
+    }
+    
+    .popup-content {
+        background-color: #ffffff;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #222eb1;
+        border-radius: 10px;
+        width: 70%;
+        
+    }
+    
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .error-message {
+        color: red;          /* Set the text color to red */
+        font-size: 14px;     /* Set the font size to 14 pixels */
+      }
+    /* Add more styling as needed */
+    

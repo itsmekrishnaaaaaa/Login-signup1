@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
+    <style></style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="img"></div>
+        <div class="container1">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="text" id="username" name="username" placeholder="Username or Email" required />
+                <input type="password" id="password" name="password" placeholder="Password" required />
+
+                <button type="submit">Login</button>
+                <label id="forgotpassword">Forget Password ?</label>
+            </form>
+        </div>
+    </div>
+
+    <div id="forgotPasswordPopup" class="popup">
+        <h2>Forgot Password</h2>
+        <form id="forgotPasswordForm">
+            <h3>Enter Your Valid Email</h3>
+            <input type="email" id="forgotEmail" name="forgotEmail" placeholder="Enter your email" required />
+            <button type="submit">Send Verification Code</button>
+            <button id="closePopup">Cancel</button>
+        </form>
+    </div>
+
+    <div class="popup" id="tokenValidationPopup">
+        <h3>Enter Verification Code</h3>
+        <form id="tokenValidationForm">
+            <input type="text" id="verificationCode" name="verificationCode" placeholder="Verification Code" required />
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+
+    <div class="reset-password-container" id="reset-password-container">
+        <h2>Reset Password</h2>
+        <form id="resetPasswordForm">
+            <input type="password" id="newPassword" name="newPassword" placeholder="New Password" required>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+            <button type="submit">Reset Password</button>
+        </form>
+    </div>
+
+
+    <script src="./js/login.js"></script>
+</body>
+
+</html>
